@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 
 #if UNITY_EDITOR
+using UnityEditor.SceneManagement;
 public class SpawnerManager : EditorWindow
 {
     private List<Spawner> spawners = new List<Spawner>();
