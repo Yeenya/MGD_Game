@@ -1,0 +1,95 @@
+.button-style {
+    height: 15%;
+    width: 100%;
+    background-color: rgb(159, 159, 159);
+    border-left-color: rgb(42, 46, 43);
+    border-right-color: rgb(42, 46, 43);
+    border-top-color: rgb(42, 46, 43);
+    border-bottom-color: rgb(42, 46, 43);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: none;
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    transition-duration: 0s;
+    transition-delay: 0s;
+    font-size: 56px;
+    -unity-font-style: bold;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.button-style:hover {
+    height: 15%;
+    width: 100%;
+    background-color: rgb(103, 103, 103);
+    border-left-color: rgb(42, 46, 43);
+    border-right-color: rgb(42, 46, 43);
+    border-top-color: rgb(42, 46, 43);
+    border-bottom-color: rgb(42, 46, 43);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: none;
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    transition-duration: 0s;
+    transition-delay: 0s;
+    font-size: 56px;
+    -unity-font-style: bold;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.button-style:active {
+    height: 15%;
+    width: 100%;
+    background-color: rgb(103, 103, 103);
+    border-left-color: rgb(42, 46, 43);
+    border-right-color: rgb(42, 46, 43);
+    border-top-color: rgb(42, 46, 43);
+    border-bottom-color: rgb(42, 46, 43);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: none;
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    transition-duration: 0s;
+    transition-delay: 0s;
+    font-size: 56px;
+    -unity-font-style: bold;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+}

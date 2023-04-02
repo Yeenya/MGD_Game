@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/styles.uss?fileID=7433441132597879392&amp;guid=d8979d4fcd7e7c447a1447d12eaf2ca9&amp;type=3#styles" />
+    <ui:VisualElement name="MainMenu" style="height: auto; flex-grow: 1; align-items: center; justify-content: space-between; background-color: rgb(111, 69, 0); background-image: url(&apos;project://database/Assets/GraphicStuff/wood_texture.jpg?fileID=2800000&amp;guid=ce20590c95befde4caf3ce84636c060e&amp;type=3#wood_texture&apos;);">
+        <ui:Label text="Village Defender" display-tooltip-when-elided="true" name="Title" style="-unity-font: none; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center; font-size: 150%; -unity-text-outline-width: 2px; -unity-text-outline-color: rgb(0, 0, 0); scale: 1 1; rotate: 0; height: auto; display: flex;" />
+        <ui:VisualElement name="ButtonsMenu" style="width: 25%; align-items: center; height: 65%; justify-content: space-around; display: flex; visibility: visible;">
+            <ui:Button text="Play" display-tooltip-when-elided="true" name="Play" class="button-style" />
+            <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="button-style" />
+            <ui:Button text="Exit Game" display-tooltip-when-elided="true" name="Exit" class="button-style" />
+        </ui:VisualElement>
+        <ui:VisualElement name="OptionsMenu" style="display: none; align-items: center; justify-content: space-around; flex-grow: 1; width: 50%; visibility: visible;">
+            <ui:VisualElement style="flex-direction: row; width: 100%;">
+                <ui:Slider picking-mode="Ignore" label="Sound Volume" value="0.5" high-value="1" page-size="0" show-input-field="false" focusable="false" name="SoundVolume" style="font-size: 75%; color: rgb(255, 255, 255); width: 100%; height: auto;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; width: 100%;">
+                <ui:Slider picking-mode="Ignore" label="Music Volume" value="0.5" high-value="1" page-size="0" show-input-field="false" focusable="false" name="MusicVolume" style="font-size: 75%; color: rgb(255, 255, 255); width: 100%; height: auto;" />
+            </ui:VisualElement>
+            <ui:Button text="Back to Menu" display-tooltip-when-elided="true" name="Back" class="button-style" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
