@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    // Class for the main menu of the game
+
     public Button startButton;
     public Button optionsButton;
     public Button exitButton;

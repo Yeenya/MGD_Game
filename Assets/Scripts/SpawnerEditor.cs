@@ -6,6 +6,8 @@ using System.Collections.Generic;
 [CustomEditor(typeof(Spawner))]
 public class SpawnerEditor : Editor
 {
+    // A small editor extension that is not that much useful, but added it with the Spawners Manager, both have some similarities
+
     private SerializedProperty enemiesProperty;
     private SerializedProperty numberToSpawnProperty;
     private SerializedProperty spawnCooldownProperty;

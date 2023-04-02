@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    // Class for every fireball
 
-    int damage = 50;
-    int liveTime = 5;
+    private int damage = 50;
+    private int liveTime = 5;
 
     // Start is called before the first frame update
     void Start()

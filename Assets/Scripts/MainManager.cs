@@ -5,12 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+    // Manager for the whole general game
+
     private static MainManager _instance;
 
+    [Tooltip("All buildings in the scene, added automatically at Start")]
     public List<GameObject> buildings;
+    [Tooltip("All enemies in the scene, updated at every Update")]
     public List<GameObject> enemies;
+    [Tooltip("All allies in the scene, updated at every Update")]
     public List<GameObject> allies;
 
+    [Tooltip("Volume of enemies, fireball etc.")]
     public float soundVolume = 0.5f;
     public float musicVolume = 0.5f;
 
@@ -20,6 +26,7 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
+        // Singleton principle
         if (_instance == null)
         {
             _instance = this;
@@ -61,6 +68,8 @@ public class MainManager : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+
+        // Play music according to the current scene
         if (sceneName == "MainMenu")
         {
             PlayClip(0);
@@ -78,7 +87,7 @@ public class MainManager : MonoBehaviour
         music.Play();
     }
 
-    IEnumerator LateBuildingsLoad()
+    IEnumerator LateBuildingsLoad() // Sometimes the buildings didn't load properly if searched for them instantly at Start, so I added a coroutine
     {
         yield return new WaitForSeconds(3);
         buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));

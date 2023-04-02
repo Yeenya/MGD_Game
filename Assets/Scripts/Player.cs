@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    [Header("Variables based around movement")]
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+
+    [Header("The rest of the variables")]
     public int cash = 100;
 
     private int fireballCooldown = 2;
@@ -57,12 +60,13 @@ public class Player : MonoBehaviour
             TryBuyAlly();
         }
 
+        //Movement code used from here: https://sharpcoderblog.com/blog/unity-3d-fps-controller
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
-        if (leftJoystick != null)
+        if (leftJoystick != null) // If on mobile, input must be handled differently
         {
             verticalInput = leftJoystick.Vertical;
             horizontalInput = leftJoystick.Horizontal;
@@ -92,7 +96,7 @@ public class Player : MonoBehaviour
         {
             float xInput = Input.GetAxis("Mouse X");
             float yInput = Input.GetAxis("Mouse Y");
-            if (rightJoystick != null)
+            if (rightJoystick != null) // Same as above with the mobile input
             {
                 xInput = rightJoystick.Horizontal;
                 yInput = rightJoystick.Vertical;
@@ -111,9 +115,8 @@ public class Player : MonoBehaviour
         fireballOnCooldown = false;
     }
 
-    public void TryBuyAlly()
+    public void TryBuyAlly() // Checks if the player is aiming at the ally spawner, and if possible, spawns the ally
     {
-        //Tweenovat barvu bilyho ctverecku s buy warrior z cervene na bilou, kdyz nejsou prachy
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hitInfo))
         {
             if (hitInfo.collider.tag == "Spawner")
@@ -124,7 +127,7 @@ public class Player : MonoBehaviour
                     UpdateCash(-spawner.cost);
                     spawner.SpawnAlly();
                 }
-                else
+                else // Make a small red flash so that the player notices he is short of cash
                 {
                     spawner.GetComponent<MeshRenderer>().material.color = Color.red;
                     spawner.GetComponent<MeshRenderer>().material.DOColor(Color.white, 1);
@@ -149,7 +152,10 @@ public class Player : MonoBehaviour
         newMissile.AddComponent<Missile>();
         newMissile.GetComponent<AudioSource>().volume = manager.soundVolume;
         menuController.fireballIcon.style.unityBackgroundImageTintColor = Color.black;
+
+        // Visualize cooldown with a simple tween
         DOTween.To(() => menuController.fireballIcon.style.unityBackgroundImageTintColor.value, x => menuController.fireballIcon.style.unityBackgroundImageTintColor = x, Color.white, fireballCooldown);
+        
         StartCoroutine(FireballCooldown());
     }
 }

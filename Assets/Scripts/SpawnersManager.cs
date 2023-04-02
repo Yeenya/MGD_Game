@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 public class SpawnerManager : EditorWindow
 {
+    // A simple Editor Window, my Editor Extension
+    // This window is for managing spawners in the scene. After refreshing the data you can easily modify the spawners and enemy prefabs
+
     private List<Spawner> spawners = new List<Spawner>();
 
     [SerializeField]

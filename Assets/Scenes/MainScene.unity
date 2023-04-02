@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rpgpp_lt_banner_01a
       objectReference: {fileID: 0}
+    - target: {fileID: 1998368968366392, guid: e1032c9b5d7d362489670d42997dceb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4612329036020226, guid: e1032c9b5d7d362489670d42997dceb5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1164,18 +1168,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 223974226}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &223974228 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
-    type: 3}
-  m_PrefabInstance: {fileID: 223974226}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &231661555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2325,6 +2317,10 @@ PrefabInstance:
       value: rpgpp_lt_building_03
       objectReference: {fileID: 0}
     - target: {fileID: 1232766363669618, guid: 2b519101e10d4a74580d4c86ac9e03e6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232766363669618, guid: 2b519101e10d4a74580d4c86ac9e03e6, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
@@ -2378,6 +2374,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b519101e10d4a74580d4c86ac9e03e6, type: 3}
+--- !u!1 &626656924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1232766363669618, guid: 2b519101e10d4a74580d4c86ac9e03e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 626656923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &626656926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4998326679312090, guid: 2b519101e10d4a74580d4c86ac9e03e6,
@@ -3021,18 +3023,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 782628375}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &782628377 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
-    type: 3}
-  m_PrefabInstance: {fileID: 782628375}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &791883267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3398,6 +3388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   allySpawned: 0
+  building: {fileID: 1976922283}
   ally: {fileID: 1668188202801692, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
 --- !u!64 &897046676
 MeshCollider:
@@ -3714,6 +3705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   allySpawned: 0
+  building: {fileID: 626656924}
   ally: {fileID: 1668188202801692, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
 --- !u!1001 &961585598
 PrefabInstance:
@@ -3919,6 +3911,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71442e8cd72511e4fabb72f1a2cc82dd, type: 3}
+--- !u!1 &980719108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1185082912798350, guid: 71442e8cd72511e4fabb72f1a2cc82dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 980719107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &980719110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4419083434238170, guid: 71442e8cd72511e4fabb72f1a2cc82dd,
@@ -4038,6 +4036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   allySpawned: 0
+  building: {fileID: 1412358087}
   ally: {fileID: 1668188202801692, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
 --- !u!64 &1011546023
 MeshCollider:
@@ -4166,6 +4165,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1056708590}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1056708592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1185082912798350, guid: 71442e8cd72511e4fabb72f1a2cc82dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1056708590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1061729447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4208458315195486, guid: c96016c34e7be62488e588470988ef5b,
@@ -4222,6 +4227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   allySpawned: 0
+  building: {fileID: 980719108}
   ally: {fileID: 1668188202801692, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
 --- !u!64 &1069337431
 MeshCollider:
@@ -4394,6 +4400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   allySpawned: 0
+  building: {fileID: 1056708592}
   ally: {fileID: 1668188202801692, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
 --- !u!64 &1087847762
 MeshCollider:
@@ -4861,6 +4868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rpgpp_lt_ladder_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1438797800468804, guid: 7087784e228be8745af45599a5130532, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4891787282750124, guid: 7087784e228be8745af45599a5130532, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5151,8 +5162,8 @@ MonoBehaviour:
   lookSpeed: 2
   lookXLimit: 45
   cash: 100
-  leftJoystick: {fileID: 223974228}
-  rightJoystick: {fileID: 782628377}
+  leftJoystick: {fileID: 0}
+  rightJoystick: {fileID: 0}
   canMove: 1
   missile: {fileID: 3046260528751698769, guid: 276980d0061822b488706c83db9c2605, type: 3}
 --- !u!136 &1395224080
@@ -5314,6 +5325,10 @@ PrefabInstance:
       value: rpgpp_lt_building_03 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1232766363669618, guid: 2b519101e10d4a74580d4c86ac9e03e6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232766363669618, guid: 2b519101e10d4a74580d4c86ac9e03e6, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
@@ -5370,6 +5385,12 @@ PrefabInstance:
 --- !u!4 &1412358086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4998326679312090, guid: 2b519101e10d4a74580d4c86ac9e03e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1412358085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1412358087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1232766363669618, guid: 2b519101e10d4a74580d4c86ac9e03e6,
     type: 3}
   m_PrefabInstance: {fileID: 1412358085}
   m_PrefabAsset: {fileID: 0}
@@ -5626,6 +5647,10 @@ PrefabInstance:
     - target: {fileID: 1667062371632208, guid: 002f7a569314a244fb643e8ea8d00376, type: 3}
       propertyPath: m_Name
       value: rpgpp_lt_banner_01b
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667062371632208, guid: 002f7a569314a244fb643e8ea8d00376, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4275342725424058, guid: 002f7a569314a244fb643e8ea8d00376, type: 3}
       propertyPath: m_RootOrder
@@ -6513,6 +6538,12 @@ MonoBehaviour:
 --- !u!4 &1976922282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3610916265669889003, guid: 71442e8cd72511e4fabb72f1a2cc82dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1976922278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1976922283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1185082912798350, guid: 71442e8cd72511e4fabb72f1a2cc82dd,
     type: 3}
   m_PrefabInstance: {fileID: 1976922278}
   m_PrefabAsset: {fileID: 0}

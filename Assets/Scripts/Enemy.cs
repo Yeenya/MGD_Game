@@ -13,10 +13,14 @@ public class Enemy : MonoBehaviour
     private bool win;
     private bool attacking;
 
+    [Tooltip("Currently nearest target of the enemy, building or ally")]
     public GameObject nearestTarget;
-    public int health, damage;
+
+    public int health;
+    public int damage;
 
     private AudioSource audioSource;
+    [Tooltip("Audio clips used for enemy sounds")]
     public AudioClip[] clips;
 
     void Start()
@@ -36,8 +40,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (win || health <= 0) return;
-        GetNearestTarget();
-        if (nearestTarget == null) return;
+        GetNearestTarget(); // Always checks for the nearest target to react appropriately
+        if (nearestTarget == null) return; // Every building destroyed and every ally killed
         float distance = Vector3.Distance(transform.position, nearestTarget.transform.position);
         if (agent.isStopped)
         {
@@ -77,6 +81,7 @@ public class Enemy : MonoBehaviour
     {
         float nearestDistance = float.MaxValue;
 
+        // Loop through all living allies
         foreach (GameObject ally in manager.allies.Where(x => x.GetComponent<Ally>().health > 0))
         {
             float distance = Vector3.Distance(transform.position, ally.transform.position);
@@ -84,13 +89,14 @@ public class Enemy : MonoBehaviour
             {
                 if (nearestTarget != null && nearestTarget.GetComponent<HitPoint>() != null)
                 {
-                    nearestTarget.GetComponent<HitPoint>().aimed = false;
+                    nearestTarget.GetComponent<HitPoint>().aimed = false; //If the previous target was a hit point on building, release it for other enemies
                 }
                 nearestDistance = distance;
                 nearestTarget = ally;
             }
         }
 
+        // Loop through all standing buildings
         foreach (GameObject building in manager.buildings.Where(x => x.GetComponent<Building>().health > 0))
         {
             foreach (Transform hitPoint in building.transform)
@@ -102,7 +108,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (nearestTarget != null && nearestTarget.GetComponent<HitPoint>() != null)
                     {
-                        nearestTarget.GetComponent<HitPoint>().aimed = false;
+                        nearestTarget.GetComponent<HitPoint>().aimed = false; //If the previous target was a hit point on building, release it for other enemies
                     }
                     nearestDistance = distance;
                     nearestTarget = hitPoint.gameObject;
@@ -112,7 +118,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void ChangeState(string newState)
+    private void ChangeState(string newState) // Function used instead of animation transtitions
     {
         if (currentState == newState) return;
         //print(gameObject.name + " " + newState);
@@ -142,9 +148,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Called from animation
-    void DealDamage()
+    void DealDamage() // Called from attack animation
     {
+        // Need to make difference between a building and an ally
         if (nearestTarget.tag == "HitPoint")
         {
             nearestTarget.GetComponentInParent<Building>().GetDamage(damage);
@@ -191,13 +197,13 @@ public class Enemy : MonoBehaviour
 
     IEnumerator MakeNoise()
     {
-        audioSource.clip = clips[Random.Range(0, 2)];
+        audioSource.clip = clips[Random.Range(0, 2)]; // First two clips are random noises
         audioSource.Play();
         yield return new WaitForSeconds(Random.Range(4, 8));
         StartCoroutine(MakeNoise());
     }
 
-    private IEnumerator WaitAnimationOverAndDoThings()
+    private IEnumerator WaitAnimationOverAndDoThings() // Same as in Ally script
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         attacking = false;

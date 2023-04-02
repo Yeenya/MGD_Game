@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class InGameMenuController : MonoBehaviour
 {
+    // Class for the in game GUI based on UI Toolkit
+
     public Button resumeButton;
     public Button restartButton;
     public Button optionsButton;
@@ -75,6 +77,7 @@ public class InGameMenuController : MonoBehaviour
             }
             else
             {
+                // Make according menus visible and invisible
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
                 UnityEngine.Cursor.visible = true;
                 cameraRotation = Camera.main.transform.rotation;
@@ -87,6 +90,7 @@ public class InGameMenuController : MonoBehaviour
 
     void ResumeButtonPressed()
     {
+        // Same as above, but reversed
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
         Time.timeScale = 1f;
@@ -109,7 +113,6 @@ public class InGameMenuController : MonoBehaviour
     void MainMenuButtonPressed()
     {
         manager.ChangeScene("MainMenu");
-        //SceneManager.LoadScene("MainMenu");
     }
 
     void BackButtonPressed()
@@ -130,11 +133,12 @@ public class InGameMenuController : MonoBehaviour
 
     public void UpdateCash(int value)
     {
-        cashLabel.text = "Cash: " + value.ToString();
+        cashLabel.text = "Cash: " + value.ToString(); // Update cash value, either after an enemy kill, or after an ally buy
     }
 
     public void UpdateWave(int value)
     {
+        // Updated via Enemy Spawners
         waveLabel.text = "Wave: " + value.ToString() + "/24";
         if (value == 25)
         {

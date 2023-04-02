@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class AllySpawner : MonoBehaviour
 {
+    [Tooltip("Cost of ally to be spawned")]
     public int cost = 100;
 
+    [Tooltip("Checks if ally is spawned from this spawner")]
     public bool allySpawned = false;
 
     private GameObject player;
 
+    [Tooltip("Reference to the building this spawner is near to")]
+    public GameObject building;
+
     private Transform spawnPlace;
 
+    [Tooltip("Prefab for ally to spawn")]
     public GameObject ally;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         spawnPlace = transform.GetChild(0);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < 4 && !allySpawned)
+        // Make the spawner visible or invisible according to the distance of the player
+        if (Vector3.Distance(player.transform.position, transform.position) < 4 && !allySpawned && building.GetComponent<MeshRenderer>().enabled)
         {
             gameObject.GetComponent<MeshRenderer>().enabled = true;
             gameObject.GetComponent<MeshCollider>().enabled = true;

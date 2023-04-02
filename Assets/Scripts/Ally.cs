@@ -28,14 +28,14 @@ public class Ally : MonoBehaviour
 
     void Update()
     {
-        if (target == null || target.GetComponent<Enemy>().health <= 0)
+        if (target == null || target.GetComponent<Enemy>().health <= 0) // Search for new enemy
         {
             attacking = false;
             GetClosestEnemy();
         }
         if (target != null)
         {
-            if (Vector3.Distance(target.transform.position, transform.position) > 3 && !attacking)
+            if (Vector3.Distance(target.transform.position, transform.position) > 3 && !attacking) // Far from target and not in animation
             {
                 agent.isStopped = false;
                 attacking = false;
@@ -78,7 +78,7 @@ public class Ally : MonoBehaviour
     private void GetClosestEnemy()
     {
         float closestDistance = float.MaxValue;
-        foreach(GameObject enemy in manager.enemies)
+        foreach(GameObject enemy in manager.enemies) // Basic for loop through all enemies to search for the closest one
         {
             float distance = Vector3.Distance(enemy.transform.position, transform.position);
             if (target == null || (distance < closestDistance && enemy.GetComponent<Enemy>().health > 0))
@@ -89,7 +89,7 @@ public class Ally : MonoBehaviour
         }
     }
 
-    void DealDamage()
+    void DealDamage() // Called from attack animation
     {
         target.GetComponent<Enemy>().GetDamage(damage);
     }
@@ -112,11 +112,11 @@ public class Ally : MonoBehaviour
         health = 0;
         spawner.GetComponent<AllySpawner>().allySpawned = false;
         ChangeState("Die");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3); // Waiting for death animation to be played before destroying the game object
         Destroy(gameObject);
     }
 
-    private IEnumerator WaitAnimationOverAndDoThings()
+    private IEnumerator WaitAnimationOverAndDoThings() // Coroutine for not interrupting ongoing animation clip, for example attacking when target got too far away during the animation
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         attacking = false;
