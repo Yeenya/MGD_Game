@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     private MainManager manager;
     private InGameMenuController menuController;
 
+    public Joystick leftJoystick;
+    public Joystick rightJoystick;
+
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -46,12 +49,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && !fireballOnCooldown)
         {
-            GameObject newMissile = Instantiate(missile, transform.position, playerCamera.transform.rotation);
-            newMissile.AddComponent<Missile>();
-            newMissile.GetComponent<AudioSource>().volume = manager.soundVolume;
-            menuController.fireballIcon.style.unityBackgroundImageTintColor = Color.black;
-            DOTween.To(()=> menuController.fireballIcon.style.unityBackgroundImageTintColor.value, x => menuController.fireballIcon.style.unityBackgroundImageTintColor = x, Color.white, fireballCooldown);
-            StartCoroutine(FireballCooldown());
+            ShootFireball();
         }
 
         if (Input.GetButtonDown("Fire2"))
@@ -62,8 +60,15 @@ public class Player : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+        if (leftJoystick != null)
+        {
+            verticalInput = leftJoystick.Vertical;
+            horizontalInput = leftJoystick.Horizontal;
+        }
+        float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * verticalInput : 0;
+        float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * horizontalInput : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
@@ -85,10 +90,17 @@ public class Player : MonoBehaviour
 
         if (canMove)
         {
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+            float xInput = Input.GetAxis("Mouse X");
+            float yInput = Input.GetAxis("Mouse Y");
+            if (rightJoystick != null)
+            {
+                xInput = rightJoystick.Horizontal;
+                yInput = rightJoystick.Vertical;
+            }
+            rotationX += -yInput * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            transform.rotation *= Quaternion.Euler(0, xInput * lookSpeed, 0);
         }
     }
 
@@ -99,7 +111,7 @@ public class Player : MonoBehaviour
         fireballOnCooldown = false;
     }
 
-    void TryBuyAlly()
+    public void TryBuyAlly()
     {
         //Tweenovat barvu bilyho ctverecku s buy warrior z cervene na bilou, kdyz nejsou prachy
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hitInfo))
@@ -124,6 +136,20 @@ public class Player : MonoBehaviour
     public void UpdateCash(int value)
     {
         cash += value;
-        menuController.UpdateCash(cash);
+        if (leftJoystick == null)
+        {
+            menuController.UpdateCash(cash);
+        }
+    }
+
+    public void ShootFireball()
+    {
+        if (fireballOnCooldown) return;
+        GameObject newMissile = Instantiate(missile, transform.position, playerCamera.transform.rotation);
+        newMissile.AddComponent<Missile>();
+        newMissile.GetComponent<AudioSource>().volume = manager.soundVolume;
+        menuController.fireballIcon.style.unityBackgroundImageTintColor = Color.black;
+        DOTween.To(() => menuController.fireballIcon.style.unityBackgroundImageTintColor.value, x => menuController.fireballIcon.style.unityBackgroundImageTintColor = x, Color.white, fireballCooldown);
+        StartCoroutine(FireballCooldown());
     }
 }
